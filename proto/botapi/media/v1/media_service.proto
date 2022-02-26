@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package botapi.media.v1;
+
+
+service MediaService {
+    // Converts human voice into text
+    rpc GetTextFromVoice(VoiceMessage) returns (TextMessage) {}
+}
+
+// Voice message that incomes from Telegram User
+message VoiceMessage {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Voice message *.ogg
+    bytes data = 2;
+}
+
+// Text of the voice message
+message TextMessage {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Transformed text from voice
+    string text = 2;
+}

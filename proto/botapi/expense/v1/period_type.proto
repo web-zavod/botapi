@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package botapi.expense.v1;
+
+enum PeriodType {
+    // Unspecified period of time
+    PERIOD_TYPE_UNSPECIFIED = 0;
+
+    // Last hour
+    PERIOD_TYPE_HOUR = 1;
+
+    // Last day
+    PERIOD_TYPE_DAY = 2;
+
+    // Last week
+    PERIOD_TYPE_WEEK = 3;
+
+    // Last month
+    PERIOD_TYPE_MONTH = 4;
+
+    // Last year
+    PERIOD_TYPE_YEAR = 5;
+    }
+

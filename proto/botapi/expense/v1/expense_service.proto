@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package botapi.expense.v1;
+
+import "google/protobuf/empty.proto";
+import "botapi/expense/v1/expense.proto";
+import "botapi/expense/v1/period_type.proto";
+
+service ExpenseService {
+    rpc AddExpense(AddExpenseRequest) returns (google.protobuf.Empty) {}
+    rpc ListExpenses(ListExpensesRequest) returns (ListExpensesResponse) {}
+    rpc DeleteExpense(DeleteExpenseRequest) returns (google.protobuf.Empty) {}
+}
+
+message AddExpenseRequest {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Expense object
+    Expense expense = 2;
+}
+
+message ListExpensesRequest {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Period type of expenses
+    PeriodType period = 2;
+}
+
+message ListExpensesResponse {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Expenses list
+    repeated Expense expenses = 2;
+}
+
+message DeleteExpenseRequest {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Expense's ID
+    int32 expense_id = 2;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package botapi.expense.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Expense {
+    // Spent money amount
+    int32 amount = 1;
+    // Time when expense was added
+    google.protobuf.Timestamp created = 2;
+    // Expense category's name
+    string category = 3;
+}

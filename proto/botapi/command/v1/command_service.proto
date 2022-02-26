@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package botapi.command.v1;
+
+service CommandService {
+    rpc GetReply(IncomingMessage) returns (ReplyMessage) {}
+}
+
+// Telegram User's message
+message IncomingMessage {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Incoming message text
+    string text = 2;
+}
+
+message ReplyMessage {
+    // Telegram User's ID
+    int64 user_id = 1;
+    // Reply message text from services
+    string text = 2;
+}
