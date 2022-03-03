@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package botapi.healthcheck.v1;
+
+import "google/protobuf/empty.proto";
+
+// Service for health check request.
+service HealthCheckService {
+    // check method returns any string to validate that service is running and
+    // grpc interface operates
+    rpc Check(google.protobuf.Empty) returns (CheckResponse) {}
+}
+
+message CheckResponse {
+  // Any string message. Usually "Ok"
+  string message = 1;
+}
+
