@@ -1,3 +1,3 @@
 pub mod healthcheck {
-    tonic::include_proto!("botapi.healthcheck.v1");
+    include!("botapi.healthcheck.v1.rs");
 }
