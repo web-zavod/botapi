@@ -1,7 +1,7 @@
 rs_dir=gen/rs
 py_dir=gen/py
 
-version = 0.1.0
+version = 1.1.0
 
 lint:
 	docker run --volume "$(shell pwd):/workspace" --workdir /workspace bufbuild/buf lint proto
@@ -14,9 +14,7 @@ compile-rs:
 compile-rs-in-docker:
 	cd $(rs_dir)
 	rustup component add rustfmt
-	cargo build
-	sed -i "3s/.*version.*/version = \"$(version)\"/" $(rs_dir)/Cargo.toml
-	cd ../..
+	cargo build --lib
 	sed -i "3s/.*version.*/version = \"$(version)\"/" $(rs_dir)/Cargo.toml
 
 
