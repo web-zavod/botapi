@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package botapi.expense.v1;
 
+import "expense.proto";
+import "period_type.proto";
 import "google/protobuf/empty.proto";
-import "botapi/expense/v1/expense.proto";
-import "botapi/expense/v1/period_type.proto";
 
 service ExpenseService {
     rpc AddExpense(AddExpenseRequest) returns (google.protobuf.Empty) {}
