@@ -2,8 +2,7 @@ syntax = "proto3";
 
 package botapi.expense.v1;
 
-import "expense.proto";
-import "period_type.proto";
+import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 service ExpenseService {
@@ -38,4 +37,33 @@ message DeleteExpenseRequest {
     int64 user_id = 1;
     // Expense's ID
     int32 expense_id = 2;
+}
+
+enum PeriodType {
+    // Unspecified period of time
+    PERIOD_TYPE_UNSPECIFIED = 0;
+
+    // Last hour
+    PERIOD_TYPE_HOUR = 1;
+
+    // Last day
+    PERIOD_TYPE_DAY = 2;
+
+    // Last week
+    PERIOD_TYPE_WEEK = 3;
+
+    // Last month
+    PERIOD_TYPE_MONTH = 4;
+
+    // Last year
+    PERIOD_TYPE_YEAR = 5;
+}
+
+message Expense {
+    // Spent money amount
+    int32 amount = 1;
+    // Time when expense was added
+    google.protobuf.Timestamp created = 2;
+    // Expense category's name
+    string category = 3;
 }
