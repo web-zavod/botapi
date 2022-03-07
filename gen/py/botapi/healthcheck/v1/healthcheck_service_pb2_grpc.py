@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from botapi.healthcheck.v1 import heathcheck_service_pb2 as botapi_dot_healthcheck_dot_v1_dot_heathcheck__service__pb2
+from botapi.healthcheck.v1 import healthcheck_service_pb2 as botapi_dot_healthcheck_dot_v1_dot_healthcheck__service__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
@@ -19,7 +19,7 @@ class HealthCheckServiceStub(object):
         self.Check = channel.unary_unary(
                 '/botapi.healthcheck.v1.HealthCheckService/Check',
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=botapi_dot_healthcheck_dot_v1_dot_heathcheck__service__pb2.CheckResponse.FromString,
+                response_deserializer=botapi_dot_healthcheck_dot_v1_dot_healthcheck__service__pb2.CheckResponse.FromString,
                 )
 
 
@@ -41,7 +41,7 @@ def add_HealthCheckServiceServicer_to_server(servicer, server):
             'Check': grpc.unary_unary_rpc_method_handler(
                     servicer.Check,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=botapi_dot_healthcheck_dot_v1_dot_heathcheck__service__pb2.CheckResponse.SerializeToString,
+                    response_serializer=botapi_dot_healthcheck_dot_v1_dot_healthcheck__service__pb2.CheckResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -67,6 +67,6 @@ class HealthCheckService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/botapi.healthcheck.v1.HealthCheckService/Check',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            botapi_dot_healthcheck_dot_v1_dot_heathcheck__service__pb2.CheckResponse.FromString,
+            botapi_dot_healthcheck_dot_v1_dot_healthcheck__service__pb2.CheckResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

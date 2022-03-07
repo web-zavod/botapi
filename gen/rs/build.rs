@@ -21,7 +21,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     tonic_build::configure()
         .out_dir("src")
         .compile(
-            &["heathcheck_service.proto"],
+            &["healthcheck_service.proto"],
             &["../../proto/botapi/healthcheck/v1"],
         )
         .unwrap();
