@@ -12,7 +12,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 	tonic_build::configure()
 		.out_dir("src")
 		.compile(
-            &["expense.proto", "period_type.proto",  "expense_service.proto"],
+            &["expense_service.proto"],
             &["../../proto/botapi/expense/v1"],
 			)
 		.unwrap();

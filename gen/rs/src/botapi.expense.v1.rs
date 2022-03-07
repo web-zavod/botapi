@@ -1,32 +1,4 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Expense {
-    /// Spent money amount
-    #[prost(int32, tag = "1")]
-    pub amount: i32,
-    /// Time when expense was added
-    #[prost(message, optional, tag = "2")]
-    pub created: ::core::option::Option<::prost_types::Timestamp>,
-    /// Expense category's name
-    #[prost(string, tag = "3")]
-    pub category: ::prost::alloc::string::String,
-}
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
-#[repr(i32)]
-pub enum PeriodType {
-    /// Unspecified period of time
-    Unspecified = 0,
-    /// Last hour
-    Hour = 1,
-    /// Last day
-    Day = 2,
-    /// Last week
-    Week = 3,
-    /// Last month
-    Month = 4,
-    /// Last year
-    Year = 5,
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AddExpenseRequest {
     /// Telegram User's ID
     #[prost(int64, tag = "1")]
@@ -61,6 +33,34 @@ pub struct DeleteExpenseRequest {
     /// Expense's ID
     #[prost(int32, tag = "2")]
     pub expense_id: i32,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Expense {
+    /// Spent money amount
+    #[prost(int32, tag = "1")]
+    pub amount: i32,
+    /// Time when expense was added
+    #[prost(message, optional, tag = "2")]
+    pub created: ::core::option::Option<::prost_types::Timestamp>,
+    /// Expense category's name
+    #[prost(string, tag = "3")]
+    pub category: ::prost::alloc::string::String,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum PeriodType {
+    /// Unspecified period of time
+    Unspecified = 0,
+    /// Last hour
+    Hour = 1,
+    /// Last day
+    Day = 2,
+    /// Last week
+    Week = 3,
+    /// Last month
+    Month = 4,
+    /// Last year
+    Year = 5,
 }
 #[doc = r" Generated client implementations."]
 pub mod expense_service_client {
