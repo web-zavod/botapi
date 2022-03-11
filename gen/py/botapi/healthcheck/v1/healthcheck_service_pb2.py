@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n/botapi/healthcheck/v1/healthcheck_service.proto\x12\x15\x62otapi.healthcheck.v1\x1a\x1bgoogle/protobuf/empty.proto\" \n\rCheckResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2]\n\x12HealthCheckService\x12G\n\x05\x43heck\x12\x16.google.protobuf.Empty\x1a$.botapi.healthcheck.v1.CheckResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n/botapi/healthcheck/v1/healthcheck_service.proto\x12\x15\x62otapi.healthcheck.v1\x1a\x1bgoogle/protobuf/empty.proto\" \n\rCheckResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2]\n\x12HealthcheckService\x12G\n\x05\x43heck\x12\x16.google.protobuf.Empty\x1a$.botapi.healthcheck.v1.CheckResponse\"\x00\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -71,8 +71,8 @@ _sym_db.RegisterMessage(CheckResponse)
 
 
 _HEALTHCHECKSERVICE = _descriptor.ServiceDescriptor(
-  name='HealthCheckService',
-  full_name='botapi.healthcheck.v1.HealthCheckService',
+  name='HealthcheckService',
+  full_name='botapi.healthcheck.v1.HealthcheckService',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
@@ -82,7 +82,7 @@ _HEALTHCHECKSERVICE = _descriptor.ServiceDescriptor(
   methods=[
   _descriptor.MethodDescriptor(
     name='Check',
-    full_name='botapi.healthcheck.v1.HealthCheckService.Check',
+    full_name='botapi.healthcheck.v1.HealthcheckService.Check',
     index=0,
     containing_service=None,
     input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
@@ -93,6 +93,6 @@ _HEALTHCHECKSERVICE = _descriptor.ServiceDescriptor(
 ])
 _sym_db.RegisterServiceDescriptor(_HEALTHCHECKSERVICE)
 
-DESCRIPTOR.services_by_name['HealthCheckService'] = _HEALTHCHECKSERVICE
+DESCRIPTOR.services_by_name['HealthcheckService'] = _HEALTHCHECKSERVICE
 
 # @@protoc_insertion_point(module_scope)
