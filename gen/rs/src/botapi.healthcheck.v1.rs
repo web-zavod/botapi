@@ -5,15 +5,15 @@ pub struct CheckResponse {
     pub message: ::prost::alloc::string::String,
 }
 #[doc = r" Generated client implementations."]
-pub mod health_check_service_client {
+pub mod healthcheck_service_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     #[doc = " Service for health check request."]
     #[derive(Debug, Clone)]
-    pub struct HealthCheckServiceClient<T> {
+    pub struct HealthcheckServiceClient<T> {
         inner: tonic::client::Grpc<T>,
     }
-    impl HealthCheckServiceClient<tonic::transport::Channel> {
+    impl HealthcheckServiceClient<tonic::transport::Channel> {
         #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
@@ -24,7 +24,7 @@ pub mod health_check_service_client {
             Ok(Self::new(conn))
         }
     }
-    impl<T> HealthCheckServiceClient<T>
+    impl<T> HealthcheckServiceClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
         T::ResponseBody: Body + Send + 'static,
@@ -38,7 +38,7 @@ pub mod health_check_service_client {
         pub fn with_interceptor<F>(
             inner: T,
             interceptor: F,
-        ) -> HealthCheckServiceClient<InterceptedService<T, F>>
+        ) -> HealthcheckServiceClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
@@ -50,7 +50,7 @@ pub mod health_check_service_client {
             <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
                 Into<StdError> + Send + Sync,
         {
-            HealthCheckServiceClient::new(InterceptedService::new(inner, interceptor))
+            HealthcheckServiceClient::new(InterceptedService::new(inner, interceptor))
         }
         #[doc = r" Compress requests with `gzip`."]
         #[doc = r""]
@@ -79,19 +79,19 @@ pub mod health_check_service_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/botapi.healthcheck.v1.HealthCheckService/Check",
+                "/botapi.healthcheck.v1.HealthcheckService/Check",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
 }
 #[doc = r" Generated server implementations."]
-pub mod health_check_service_server {
+pub mod healthcheck_service_server {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
-    #[doc = "Generated trait containing gRPC methods that should be implemented for use with HealthCheckServiceServer."]
+    #[doc = "Generated trait containing gRPC methods that should be implemented for use with HealthcheckServiceServer."]
     #[async_trait]
-    pub trait HealthCheckService: Send + Sync + 'static {
+    pub trait HealthcheckService: Send + Sync + 'static {
         #[doc = " check method returns any string to validate that service is running and"]
         #[doc = " grpc interface operates"]
         async fn check(
@@ -101,13 +101,13 @@ pub mod health_check_service_server {
     }
     #[doc = " Service for health check request."]
     #[derive(Debug)]
-    pub struct HealthCheckServiceServer<T: HealthCheckService> {
+    pub struct HealthcheckServiceServer<T: HealthcheckService> {
         inner: _Inner<T>,
         accept_compression_encodings: (),
         send_compression_encodings: (),
     }
     struct _Inner<T>(Arc<T>);
-    impl<T: HealthCheckService> HealthCheckServiceServer<T> {
+    impl<T: HealthcheckService> HealthcheckServiceServer<T> {
         pub fn new(inner: T) -> Self {
             let inner = Arc::new(inner);
             let inner = _Inner(inner);
@@ -124,9 +124,9 @@ pub mod health_check_service_server {
             InterceptedService::new(Self::new(inner), interceptor)
         }
     }
-    impl<T, B> tonic::codegen::Service<http::Request<B>> for HealthCheckServiceServer<T>
+    impl<T, B> tonic::codegen::Service<http::Request<B>> for HealthcheckServiceServer<T>
     where
-        T: HealthCheckService,
+        T: HealthcheckService,
         B: Body + Send + 'static,
         B::Error: Into<StdError> + Send + 'static,
     {
@@ -139,10 +139,10 @@ pub mod health_check_service_server {
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             let inner = self.inner.clone();
             match req.uri().path() {
-                "/botapi.healthcheck.v1.HealthCheckService/Check" => {
+                "/botapi.healthcheck.v1.HealthcheckService/Check" => {
                     #[allow(non_camel_case_types)]
-                    struct CheckSvc<T: HealthCheckService>(pub Arc<T>);
-                    impl<T: HealthCheckService> tonic::server::UnaryService<()> for CheckSvc<T> {
+                    struct CheckSvc<T: HealthcheckService>(pub Arc<T>);
+                    impl<T: HealthcheckService> tonic::server::UnaryService<()> for CheckSvc<T> {
                         type Response = super::CheckResponse;
                         type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
                         fn call(&mut self, request: tonic::Request<()>) -> Self::Future {
@@ -178,7 +178,7 @@ pub mod health_check_service_server {
             }
         }
     }
-    impl<T: HealthCheckService> Clone for HealthCheckServiceServer<T> {
+    impl<T: HealthcheckService> Clone for HealthcheckServiceServer<T> {
         fn clone(&self) -> Self {
             let inner = self.inner.clone();
             Self {
@@ -188,7 +188,7 @@ pub mod health_check_service_server {
             }
         }
     }
-    impl<T: HealthCheckService> Clone for _Inner<T> {
+    impl<T: HealthcheckService> Clone for _Inner<T> {
         fn clone(&self) -> Self {
             Self(self.0.clone())
         }
@@ -198,7 +198,7 @@ pub mod health_check_service_server {
             write!(f, "{:?}", self.0)
         }
     }
-    impl<T: HealthCheckService> tonic::transport::NamedService for HealthCheckServiceServer<T> {
-        const NAME: &'static str = "botapi.healthcheck.v1.HealthCheckService";
+    impl<T: HealthcheckService> tonic::transport::NamedService for HealthcheckServiceServer<T> {
+        const NAME: &'static str = "botapi.healthcheck.v1.HealthcheckService";
     }
 }

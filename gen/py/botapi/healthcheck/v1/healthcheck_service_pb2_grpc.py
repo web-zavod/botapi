@@ -6,7 +6,7 @@ from botapi.healthcheck.v1 import healthcheck_service_pb2 as botapi_dot_healthch
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-class HealthCheckServiceStub(object):
+class HealthcheckServiceStub(object):
     """Service for health check request.
     """
 
@@ -17,13 +17,13 @@ class HealthCheckServiceStub(object):
             channel: A grpc.Channel.
         """
         self.Check = channel.unary_unary(
-                '/botapi.healthcheck.v1.HealthCheckService/Check',
+                '/botapi.healthcheck.v1.HealthcheckService/Check',
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=botapi_dot_healthcheck_dot_v1_dot_healthcheck__service__pb2.CheckResponse.FromString,
                 )
 
 
-class HealthCheckServiceServicer(object):
+class HealthcheckServiceServicer(object):
     """Service for health check request.
     """
 
@@ -36,7 +36,7 @@ class HealthCheckServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_HealthCheckServiceServicer_to_server(servicer, server):
+def add_HealthcheckServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Check': grpc.unary_unary_rpc_method_handler(
                     servicer.Check,
@@ -45,12 +45,12 @@ def add_HealthCheckServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'botapi.healthcheck.v1.HealthCheckService', rpc_method_handlers)
+            'botapi.healthcheck.v1.HealthcheckService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class HealthCheckService(object):
+class HealthcheckService(object):
     """Service for health check request.
     """
 
@@ -65,7 +65,7 @@ class HealthCheckService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/botapi.healthcheck.v1.HealthCheckService/Check',
+        return grpc.experimental.unary_unary(request, target, '/botapi.healthcheck.v1.HealthcheckService/Check',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             botapi_dot_healthcheck_dot_v1_dot_healthcheck__service__pb2.CheckResponse.FromString,
             options, channel_credentials,
