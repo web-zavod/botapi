@@ -1,2 +1,7 @@
+#Python virualenv
+venv
+env
+
+# Rust build artifacts
 target
 Cargo.lock
