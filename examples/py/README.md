@@ -1,5 +1,5 @@
 ## Python healthcheck service example
-To add Healthcheck feature to your Python service, you have to inherit some class from [HealthcheckServiceServicer](https://github.com/web-zavod/botapi/blob/master/gen/py/botapi/healthcheck/v1/healthcheck_service_pb2_grpc.py) that generated from [Hejalthcheck_service.proto](https://github.com/web-zavod/botapi/blob/master/proto/botapi/healthcheck/v1/healthcheck_service.proto) and implement `Check` method:
+To add Healthcheck feature to your Python service, you have to inherit some class from [HealthcheckServiceServicer](https://github.com/web-zavod/botapi/blob/master/gen/py/botapi/healthcheck/v1/healthcheck_service_pb2_grpc.py) that generated from [Healthcheck_service.proto](https://github.com/web-zavod/botapi/blob/master/proto/botapi/healthcheck/v1/healthcheck_service.proto) and implement `Check` method:
 
 
 ##### Interface
