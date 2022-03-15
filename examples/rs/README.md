@@ -1,7 +1,8 @@
-use std::net::SocketAddr;
+## Rust healthcheck service example
 
-use tonic::{transport::Server, Request, Response, Status};
+To add Healthcheck feature to your Rust service, you have to implement the `HealthcheckService` trait for some of your structure:
 
+```rust
 use botapi::healthcheck::healthcheck_service_server::{
     HealthcheckService, HealthcheckServiceServer,
 };
@@ -19,13 +20,4 @@ impl HealthcheckService for Service {
     }
 }
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    env_logger::init();
-    let addr = "[::]:5000";
-    log::debug!("gRPC server serving at: {}", addr);
-    let svc = HealthcheckServiceServer::new(Service {});
-    let socket: SocketAddr = addr.parse().unwrap();
-    Server::builder().add_service(svc).serve(socket).await?;
-    Ok(())
-}
+```
