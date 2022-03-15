@@ -1,2 +1,11 @@
+#Python virualenv
+venv
+env
+
+# Python bytecode
+__pycache__
+
+
+# Rust build artifacts
 target
 Cargo.lock
