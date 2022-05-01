@@ -1,3 +1,4 @@
+go_dir=gen/go
 rs_dir=gen/rs
 py_dir=gen/py
 
@@ -12,13 +13,33 @@ proto_files=\
 lint:
 	docker run --volume "$(shell pwd):/workspace" --workdir /workspace bufbuild/buf lint proto
 
-compile: compile-rs compile-py
+compile: compile-rs compile-py compile-go
+
+compile-go:
+	docker run --volume "$(shell pwd):/workspace" --workdir /workspace golang:1.17-stretch make compile-go-in-docker
 
 compile-rs:
 	docker run --volume "$(shell pwd):/workspace" --workdir /workspace rust:1.59-buster make compile-rs-in-docker
 
 compile-py:
 	docker run --volume "$(shell pwd):/workspace" --workdir /workspace  python:3.10 make compile-py-in-docker
+
+compile-go-in-docker:
+	apt-get update && apt-get install -y unzip jq
+	cd /tmp; curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.19.1/protoc-3.19.1-linux-x86_64.zip
+	cd /tmp; unzip protoc-3.19.1-linux-x86_64.zip -d /usr
+
+	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+	cd $(go_dir); rm -rf *
+	protoc -Iproto \
+		--go_out=$(go_dir) \
+		--go_opt paths=source_relative \
+		--go-grpc_out=$(go_dir) \
+		--go-grpc_opt paths=source_relative \
+		$(proto_files)
+	cd $(go_dir); mv botapi/* .; rm -rf botapi
 
 compile-rs-in-docker:
 	find $(rs_dir)/src -type f -not -name 'lib.rs' -delete

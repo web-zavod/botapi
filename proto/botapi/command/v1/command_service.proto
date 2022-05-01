@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package botapi.command.v1;
 
+option go_package = "github.com/web-zavod/botapi/gen/go/command/v1;command";
+
 service CommandService {
     rpc GetReply(IncomingMessage) returns (ReplyMessage) {}
 }
