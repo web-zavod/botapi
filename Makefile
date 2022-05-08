@@ -2,7 +2,7 @@ go_dir=gen/go
 rs_dir=gen/rs
 py_dir=gen/py
 
-version = 1.1.0
+version = 1.1.2
 
 proto_files=\
 	proto/botapi/command/v1/*.proto \
@@ -13,13 +13,10 @@ proto_files=\
 lint:
 	docker run --volume "$(shell pwd):/workspace" --workdir /workspace bufbuild/buf lint proto
 
-compile: compile-rs compile-py compile-go
+compile: compile-py compile-go
 
 compile-go:
 	docker run --volume "$(shell pwd):/workspace" --workdir /workspace golang:1.17-stretch make compile-go-in-docker
-
-compile-rs:
-	docker run --volume "$(shell pwd):/workspace" --workdir /workspace rust:1.59-buster make compile-rs-in-docker
 
 compile-py:
 	docker run --volume "$(shell pwd):/workspace" --workdir /workspace  python:3.10 make compile-py-in-docker
@@ -40,13 +37,6 @@ compile-go-in-docker:
 		--go-grpc_opt paths=source_relative \
 		$(proto_files)
 	cd $(go_dir); mv botapi/* .; rm -rf botapi
-
-compile-rs-in-docker:
-	find $(rs_dir)/src -type f -not -name 'lib.rs' -delete
-	cd $(rs_dir)
-	rustup component add rustfmt
-	cargo build --lib
-	sed -i "3s/.*version.*/version = \"$(version)\"/" $(rs_dir)/Cargo.toml
 
 compile-py-in-docker:
 	rm -rf $(py_dir)/*
